@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     line-height: 1.5;
     font-family: 'Raleway', sans-serif;
+    font-weight: ${(p) => p.theme.weights.normal};
   }
   
   img, picture, video, canvas, svg {
@@ -22,6 +23,10 @@ const GlobalStyles = createGlobalStyle`
   
   input, button, textarea, select {
     font: inherit;
+  }
+  
+  a, button {
+    color: inherit;
   }
 
   #root {

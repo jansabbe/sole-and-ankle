@@ -39,7 +39,6 @@ const MarketingMessage = styled.span`
 `;
 
 const HelpLink = styled.a`
-    color: inherit;
     text-decoration: none;
     outline-offset: 2px;
 

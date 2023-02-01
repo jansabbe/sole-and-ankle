@@ -26,10 +26,31 @@ const Header = () => {
     );
 };
 
-const MainHeader = styled.div``;
+const MainHeader = styled.div`
+    padding: 24px 32px;
+    color: ${(p) => p.theme.colors.gray[900]};
+    border-bottom: 1px solid ${(p) => p.theme.colors.gray[300]};
+    display: flex;
+    align-items: baseline;
+`;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 48px;
+`;
 
-const NavLink = styled.a``;
+const NavLink = styled.a`
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: ${18 / 16}rem;
+    font-weight: ${(p) => p.theme.weights.medium};
+
+    &:first-of-type {
+        color: ${(p) => p.theme.colors.secondary};
+    }
+`;
 
 export default Header;
