@@ -23,9 +23,10 @@ const Input = styled.input`
     background-color: transparent;
     padding-left: 24px;
     border: none;
+    border-radius: 0px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray[300]};
     color: ${({ theme }) => theme.colors.gray[100]};
-    outline-offset: 4px;
+    outline-offset: 2px;
     &::placeholder {
         color: ${COLORS.gray[500]};
     }
