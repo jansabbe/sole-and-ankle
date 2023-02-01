@@ -26,15 +26,11 @@ const Sidebar = () => {
 const Wrapper = styled.aside``;
 
 const Link = styled.a`
-  display: block;
-  text-decoration: none;
-  font-weight: ${WEIGHTS.medium};
-  color: ${COLORS.gray[900]};
-  line-height: 2;
+
 `;
 
 const ActiveLink = styled(Link)`
-  color: ${COLORS.primary};
+
 `;
 
 export default Sidebar;
