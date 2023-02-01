@@ -1,20 +1,18 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { WEIGHTS } from '../../constants';
+import { WEIGHTS } from "../../constants";
 
 const Logo = (props) => {
-  return (
-    <Link href="/">
-      <Wrapper {...props}>Sole&amp;Ankle</Wrapper>
-    </Link>
-  );
+    return (
+        <Link href="/">
+            <Wrapper {...props}>Sole&amp;Ankle</Wrapper>
+        </Link>
+    );
 };
 
-const Link = styled.a`
-`;
+const Link = styled.a``;
 
-const Wrapper = styled.h1`
-`;
+const Wrapper = styled.h1``;
 
 export default Logo;
