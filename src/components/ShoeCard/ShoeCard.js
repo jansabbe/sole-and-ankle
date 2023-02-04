@@ -62,7 +62,6 @@ const labels = {
 
 const Link = styled.a`
     text-decoration: none;
-    flex: 1 0 340px;
     outline-offset: 8px;
 `;
 
