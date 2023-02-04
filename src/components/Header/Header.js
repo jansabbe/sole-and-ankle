@@ -10,7 +10,9 @@ const Header = () => {
         <header>
             <SuperHeader />
             <MainHeader>
-                <Logo />
+                <Side>
+                    <Logo />
+                </Side>
                 <Nav>
                     <NavLink href="/sale">Sale</NavLink>
                     <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -19,18 +21,18 @@ const Header = () => {
                     <NavLink href="/kids">Kids</NavLink>
                     <NavLink href="/collections">Collections</NavLink>
                 </Nav>
-                <InvisibleLogo />
+                <Side />
             </MainHeader>
         </header>
     );
 };
 
 const MainHeader = styled.div`
-    padding: 24px 32px;
+    padding: 17px 32px 19px;
     color: ${(p) => p.theme.colors.gray[900]};
     border-bottom: 1px solid ${(p) => p.theme.colors.gray[300]};
     display: flex;
-    gap: 16px;
+    gap: 48px;
     align-items: baseline;
 `;
 
@@ -53,12 +55,8 @@ const NavLink = styled.a`
     }
 `;
 
-const InvisibleLogo = styled(Logo)`
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    flex-shrink: 1;
-    visibility: hidden;
+const Side = styled.div`
+    flex: 1;
 `;
 
 export default Header;

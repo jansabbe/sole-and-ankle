@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const Logo = ({ className, ...props }) => {
+const Logo = ({ ...props }) => {
     return (
-        <Link className={className} href="/">
+        <Link href="/">
             <Wrapper {...props}>Sole&amp;Ankle</Wrapper>
         </Link>
     );
