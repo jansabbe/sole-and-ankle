@@ -21,6 +21,7 @@ const Header = () => {
                     <NavLink href="/kids">Kids</NavLink>
                     <NavLink href="/collections">Collections</NavLink>
                 </Nav>
+                <InvisibleLogo />
             </MainHeader>
         </header>
     );
@@ -31,14 +32,15 @@ const MainHeader = styled.div`
     color: ${(p) => p.theme.colors.gray[900]};
     border-bottom: 1px solid ${(p) => p.theme.colors.gray[300]};
     display: flex;
+    gap: 16px;
     align-items: baseline;
 `;
 
 const Nav = styled.nav`
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: baseline;
+    margin-inline: auto;
     gap: 48px;
 `;
 
@@ -51,6 +53,14 @@ const NavLink = styled.a`
     &:first-of-type {
         color: ${(p) => p.theme.colors.secondary};
     }
+`;
+
+const InvisibleLogo = styled(Logo)`
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    flex-shrink: 1;
+    visibility: hidden;
 `;
 
 export default Header;

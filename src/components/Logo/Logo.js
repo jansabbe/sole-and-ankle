@@ -3,9 +3,9 @@ import styled from "styled-components/macro";
 
 import { WEIGHTS } from "../../constants";
 
-const Logo = (props) => {
+const Logo = ({ className, ...props }) => {
     return (
-        <Link href="/">
+        <Link className={className} href="/">
             <Wrapper {...props}>Sole&amp;Ankle</Wrapper>
         </Link>
     );
@@ -13,9 +13,6 @@ const Logo = (props) => {
 
 const Link = styled.a`
     text-decoration: none;
-    min-width: 0;
-    flex-basis: 0;
-    white-space: nowrap;
 `;
 
 const Wrapper = styled.h1`
