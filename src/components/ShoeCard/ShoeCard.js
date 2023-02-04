@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-import { COLORS, WEIGHTS } from "../../constants";
 import { formatPrice, pluralize, isNewShoe } from "../../utils";
 import Spacer from "../Spacer";
 
@@ -31,23 +29,35 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+    const RegularPrice = variant === "on-sale" ? DiscountedPrice : Price;
     return (
         <Link href={`/shoe/${slug}`}>
             <Wrapper>
                 <ImageWrapper>
                     <Image alt="" src={imageSrc} />
+                    {variant !== "default" && (
+                        <Badge variant={variant}>{labels[variant]}</Badge>
+                    )}
                 </ImageWrapper>
                 <Spacer size={12} />
                 <Row>
                     <Name>{name}</Name>
-                    <Price>{formatPrice(price)}</Price>
+                    <RegularPrice>{formatPrice(price)}</RegularPrice>
                 </Row>
                 <Row>
                     <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
+                    {variant === "on-sale" && (
+                        <SalePrice>{formatPrice(salePrice)}</SalePrice>
+                    )}
                 </Row>
             </Wrapper>
         </Link>
     );
+};
+
+const labels = {
+    "on-sale": "Sale",
+    "new-release": "Just Released!",
 };
 
 const Link = styled.a`
@@ -58,7 +68,9 @@ const Link = styled.a`
 
 const Wrapper = styled.article``;
 
-const ImageWrapper = styled.div``;
+const ImageWrapper = styled.div`
+    position: relative;
+`;
 
 const Image = styled.img`
     width: 100%;
@@ -68,6 +80,7 @@ const Image = styled.img`
 const Row = styled.div`
     display: flex;
     align-items: baseline;
+    justify-content: space-between;
     gap: 16px;
 `;
 
@@ -75,7 +88,11 @@ const Name = styled.h3`
     font-size: 1rem;
     font-weight: ${(p) => p.theme.weights.medium};
     color: ${(p) => p.theme.colors.gray[900]};
-    margin-right: auto;
+`;
+
+const DiscountedPrice = styled.span`
+    color: ${(p) => p.theme.colors.gray[700]};
+    text-decoration: line-through;
 `;
 
 const Price = styled.span`
@@ -86,6 +103,24 @@ const ColorInfo = styled.p`
     color: ${(p) => p.theme.colors.gray[700]};
 `;
 
-const SalePrice = styled.span``;
+const SalePrice = styled.span`
+    color: ${(p) => p.theme.colors.primary};
+    font-weight: ${(p) => p.theme.weights.medium};
+`;
+
+const Badge = styled.div`
+    position: absolute;
+    top: 12px;
+    right: -4px;
+    font-size: ${14 / 16}rem;
+    font-weight: ${(p) => p.theme.weights.bold};
+    color: white;
+    padding: 8px 12px;
+    border-radius: 2px;
+    background-color: ${(p) =>
+        p.variant === "on-sale"
+            ? p.theme.colors.primary
+            : p.theme.colors.secondary};
+`;
 
 export default ShoeCard;

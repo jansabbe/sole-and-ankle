@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { WEIGHTS } from "../../constants";
-
 const Logo = ({ className, ...props }) => {
     return (
         <Link className={className} href="/">
