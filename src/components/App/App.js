@@ -17,6 +17,9 @@ const App = () => {
     );
 };
 
-const Main = styled.main``;
+const Main = styled.main`
+    // avoid margin collapse on safari on the bottom
+    padding-bottom: 1px;
+`;
 
 export default App;
