@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { formatPrice, pluralize, isNewShoe } from "../../utils";
 import Spacer from "../Spacer";
+import { COLORS } from "../../constants";
 
 const ShoeCard = ({
     slug,
@@ -24,25 +25,27 @@ const ShoeCard = ({
     // will triumph and be the variant used.
     // prettier-ignore
     const variant = typeof salePrice === 'number'
-    ? 'on-sale'
-    : isNewShoe(releaseDate)
-      ? 'new-release'
-      : 'default'
+        ? 'on-sale'
+        : isNewShoe(releaseDate)
+            ? 'new-release'
+            : 'default'
 
-    const RegularPrice = variant === "on-sale" ? DiscountedPrice : Price;
     return (
         <Link href={`/shoe/${slug}`}>
             <Wrapper>
                 <ImageWrapper>
                     <Image alt="" src={imageSrc} />
-                    {variant !== "default" && (
-                        <Badge variant={variant}>{labels[variant]}</Badge>
+                    {variant === "on-sale" && <OnSaleBadge>Sale</OnSaleBadge>}
+                    {variant === "new-release" && (
+                        <NewReleaseBadge>Just Released!</NewReleaseBadge>
                     )}
                 </ImageWrapper>
                 <Spacer size={12} />
                 <Row>
                     <Name>{name}</Name>
-                    <RegularPrice>{formatPrice(price)}</RegularPrice>
+                    <Price style={priceStyles[variant]}>
+                        {formatPrice(price)}
+                    </Price>
                 </Row>
                 <Row>
                     <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
@@ -55,9 +58,11 @@ const ShoeCard = ({
     );
 };
 
-const labels = {
-    "on-sale": "Sale",
-    "new-release": "Just Released!",
+const priceStyles = {
+    "on-sale": {
+        "--color": COLORS.gray[700],
+        "--decoration": "line-through",
+    },
 };
 
 const Link = styled.a`
@@ -81,24 +86,24 @@ const Row = styled.div`
     align-items: baseline;
     justify-content: space-between;
     gap: 1ch;
+    color: ${(p) => p.theme.colors.gray[900]};
 `;
 
 const Name = styled.h3`
     font-size: 1rem;
     font-weight: ${(p) => p.theme.weights.medium};
-    color: ${(p) => p.theme.colors.gray[900]};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-`;
 
-const DiscountedPrice = styled.span`
-    color: ${(p) => p.theme.colors.gray[700]};
-    text-decoration: line-through;
+    ${Link}:hover & {
+        text-decoration: underline;
+    }
 `;
 
 const Price = styled.span`
-    color: ${(p) => p.theme.colors.gray[900]};
+    color: var(--color);
+    text-decoration: var(--decoration);
 `;
 
 const ColorInfo = styled.p`
@@ -115,14 +120,19 @@ const Badge = styled.div`
     top: 12px;
     right: -4px;
     font-size: ${14 / 16}rem;
+    line-height: ${32 / 16}rem;
     font-weight: ${(p) => p.theme.weights.bold};
     color: white;
-    padding: 8px 12px;
+    padding: 0 10px;
     border-radius: 2px;
-    background-color: ${(p) =>
-        p.variant === "on-sale"
-            ? p.theme.colors.primary
-            : p.theme.colors.secondary};
+`;
+
+const OnSaleBadge = styled(Badge)`
+    background-color: ${(p) => p.theme.colors.primary};
+`;
+
+const NewReleaseBadge = styled(Badge)`
+    background-color: ${(p) => p.theme.colors.secondary};
 `;
 
 export default ShoeCard;
