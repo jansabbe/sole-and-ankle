@@ -52,13 +52,18 @@ const ShoeCard = ({
 
 const Link = styled.a`
     text-decoration: none;
+    flex: 1 0 340px;
+    outline-offset: 8px;
 `;
 
 const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div``;
 
-const Image = styled.img``;
+const Image = styled.img`
+    width: 100%;
+    border-radius: 16px 16px 4px 4px;
+`;
 
 const Row = styled.div`
     display: flex;
