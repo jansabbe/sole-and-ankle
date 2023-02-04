@@ -23,7 +23,8 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 12px 32px;
+    padding-inline: 32px;
+    height: ${40 / 16}rem;
     background-color: ${({ theme }) => theme.colors.gray[900]};
     color: ${({ theme }) => theme.colors.gray[300]};
     font-weight: ${({ theme }) => theme.weights.medium};
