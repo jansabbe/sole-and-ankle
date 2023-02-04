@@ -80,13 +80,16 @@ const Row = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 16px;
+    gap: 1ch;
 `;
 
 const Name = styled.h3`
     font-size: 1rem;
     font-weight: ${(p) => p.theme.weights.medium};
     color: ${(p) => p.theme.colors.gray[900]};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const DiscountedPrice = styled.span`

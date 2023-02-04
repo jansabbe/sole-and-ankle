@@ -24,7 +24,8 @@ const Wrapper = styled.div`
 `;
 
 const ShoeCardWrapper = styled.div`
-    flex: 1 0 270px;
+    flex: 1;
+    min-width: 270px;
 `;
 
 export default ShoeGrid;
