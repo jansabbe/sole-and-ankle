@@ -50,7 +50,9 @@ const ShoeCard = ({
     );
 };
 
-const Link = styled.a``;
+const Link = styled.a`
+    text-decoration: none;
+`;
 
 const Wrapper = styled.article``;
 
@@ -58,13 +60,26 @@ const ImageWrapper = styled.div``;
 
 const Image = styled.img``;
 
-const Row = styled.div``;
+const Row = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+`;
 
-const Name = styled.h3``;
+const Name = styled.h3`
+    font-size: 1rem;
+    font-weight: ${(p) => p.theme.weights.medium};
+    color: ${(p) => p.theme.colors.gray[900]};
+    margin-right: auto;
+`;
 
-const Price = styled.span``;
+const Price = styled.span`
+    color: ${(p) => p.theme.colors.gray[900]};
+`;
 
-const ColorInfo = styled.p``;
+const ColorInfo = styled.p`
+    color: ${(p) => p.theme.colors.gray[700]};
+`;
 
 const SalePrice = styled.span``;
 
