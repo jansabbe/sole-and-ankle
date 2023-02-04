@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-import { WEIGHTS } from "../../constants";
-
 import Breadcrumbs from "../Breadcrumbs";
 import Select from "../Select";
 import Spacer from "../Spacer";
@@ -45,14 +42,30 @@ const ShoeIndex = ({ sortId, setSortId }) => {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: row-reverse;
+    gap: 32px;
+    margin: 64px 32px;
+    align-items: baseline;
 `;
 
-const LeftColumn = styled.div``;
+const LeftColumn = styled.div`
+    flex: 0 1 248px;
+`;
 
-const MainColumn = styled.div``;
+const MainColumn = styled.div`
+    flex: 1 999999;
+`;
 
-const Header = styled.header``;
+const Header = styled.header`
+    display: flex;
+    align-items: baseline;
+    gap: 48px;
+`;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+    margin-right: auto;
+    font-size: ${24 / 16}rem;
+    font-weight: ${(p) => p.theme.weights.medium};
+    color: ${(p) => p.theme.colors.gray[900]};
+`;
 
 export default ShoeIndex;
