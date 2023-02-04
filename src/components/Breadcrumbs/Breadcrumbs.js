@@ -17,9 +17,26 @@ Breadcrumbs.Crumb = ({ href, children, delegated }) => {
     );
 };
 
-const CrumbWrapper = styled.div``;
+const CrumbWrapper = styled.div`
+    &:not(:last-child)::after {
+        content: "/";
+        margin-left: 8px;
+        color: ${(p) => p.theme.colors.gray[300]};
+    }
+`;
 
-const CrumbLink = styled.a``;
+const CrumbLink = styled.a`
+    color: ${(p) => p.theme.colors.gray[700]};
+    text-decoration: none;
+    &:hover {
+        color: ${(p) => p.theme.colors.gray[900]};
+        text-decoration: underline;
+    }
+`;
 
-const Wrapper = styled.nav``;
+const Wrapper = styled.nav`
+    display: flex;
+    font-size: ${14 / 16}rem;
+    gap: 8px;
+`;
 export default Breadcrumbs;
