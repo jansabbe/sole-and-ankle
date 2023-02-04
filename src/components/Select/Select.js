@@ -1,47 +1,52 @@
 import React from "react";
 import styled from "styled-components/macro";
-
-import { COLORS, WEIGHTS } from "../../constants";
 import Icon from "../Icon";
 
 const Select = ({ label, value, children, ...delegated }) => {
-    const childArray = React.Children.toArray(children);
-    const selectedChild = childArray.find(
-        (child) => child.props.value === value
-    );
-
-    const displayedValue = selectedChild.props.children;
-
     return (
         <Wrapper>
             <VisibleLabel>{label}</VisibleLabel>
-
             <SelectWrapper>
                 <NativeSelect {...delegated}>{children}</NativeSelect>
-
-                <DisplayedBit>
-                    {displayedValue}
-                    <ChevronIcon
-                        id="chevron-down"
-                        size={24}
-                        strokeWidth={1.5}
-                    />
-                </DisplayedBit>
+                <ChevronIcon id="chevron-down" size={24} strokeWidth={1.5} />
             </SelectWrapper>
         </Wrapper>
     );
 };
 
-const Wrapper = styled.label``;
+const Wrapper = styled.label`
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+`;
 
-const VisibleLabel = styled.span``;
+const VisibleLabel = styled.span`
+    color: ${(p) => p.theme.colors.gray[700]};
+    font-weight: ${(p) => p.theme.weights.normal};
+`;
 
-const SelectWrapper = styled.div``;
+const SelectWrapper = styled.div`
+    position: relative;
+`;
 
-const NativeSelect = styled.select``;
+const NativeSelect = styled.select`
+    appearance: none;
+    color: ${(p) => p.theme.colors.gray[900]};
+    font-weight: ${(p) => p.theme.weights.medium};
+    border: none;
+    border-radius: 8px;
+    background-color: ${(p) => p.theme.colors.gray[100]};
+    padding: 12px 42px 12px 16px;
+    cursor: pointer;
+`;
 
-const DisplayedBit = styled.span``;
-
-const ChevronIcon = styled(Icon)``;
+const ChevronIcon = styled(Icon)`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    margin-block: auto;
+    right: 16px;
+`;
 
 export default Select;
